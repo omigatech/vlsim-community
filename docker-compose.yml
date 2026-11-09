@@ -1,0 +1,56 @@
+name: vl-sim
+
+x-sender: &sender
+  image: ghcr.io/omigatech/vl-sim:latest
+  restart: unless-stopped
+  extra_hosts:
+    - "host.docker.internal:host-gateway"
+  logging:
+    driver: json-file
+    options:
+      max-size: "5m"
+      max-file: "3"
+
+services:
+
+  mosquitto:
+    image: eclipse-mosquitto:2
+    command: mosquitto -c /mosquitto-no-auth.conf
+    restart: unless-stopped
+    ports:
+      - "1883:1883"
+
+  udp-vehicle:
+    <<: *sender
+    command:
+      - vludpsender-cli
+      - /config/udp-config/vehicle_telemetry.json
+      - --address=host.docker.internal
+      - --port=45454
+      - --rate=50
+
+  mqtt-robot:
+    <<: *sender
+    depends_on: [mosquitto]
+    command:
+      - vlmqttsender-cli
+      - /config/mqtt-config/industrial_robot_mqtt.json
+      - --broker=mosquitto
+
+  mqtt-imu:
+    <<: *sender
+    depends_on: [mosquitto]
+    command:
+      - vlmqttsender-cli
+      - /config/mqtt-config/imu_mqtt.json
+      - --broker=mosquitto
+
+  # --- Your own schema --------------------------------------------------------------------
+  # Put a schema in ./schemas next to this file and uncomment. See schemas/example_device.json.
+  #
+  # my-device:
+  #   <<: *sender
+  #   depends_on: [mosquitto]
+  #   volumes:
+  #     - ./schemas:/config/custom:ro
+  #   command: [vlmqttsender-cli, /config/custom/example_device.json, --broker=mosquitto]

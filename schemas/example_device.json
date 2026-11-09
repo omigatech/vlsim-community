@@ -1,0 +1,17 @@
+{
+  "endianness": "Little",
+  "mqtt": {
+    "topics": [
+      {"topic": "sim/pump/process", "rateHz": 10, "signals": ["Pressure", "FlowRate", "MotorSpeed"]},
+      {"topic": "sim/pump/status",  "rateHz": 1,  "signals": ["*"]}
+    ]
+  },
+  "dataSignals": [
+    {"name": "Pressure",    "dataType": "float32", "byteOffset": 0,  "unit": "bar",   "minValue": 0,   "maxValue": 16,   "description": "Discharge pressure"},
+    {"name": "FlowRate",    "dataType": "float32", "byteOffset": 4,  "unit": "m3/h",  "minValue": 0,   "maxValue": 120,  "description": "Flow through the pump"},
+    {"name": "MotorSpeed",  "dataType": "uint16",  "byteOffset": 8,  "unit": "rpm",   "minValue": 0,   "maxValue": 3000, "description": "Motor speed"},
+    {"name": "MotorTemp",   "dataType": "int16",   "byteOffset": 10, "unit": "°C",    "minValue": 20,  "maxValue": 95,   "description": "Motor winding temperature"},
+    {"name": "Running",     "dataType": "bool",    "byteOffset": 12, "bit": 0,                         "description": "Pump running"},
+    {"name": "Alarm",       "dataType": "bool",    "byteOffset": 12, "bit": 1,                         "description": "Any alarm active"}
+  ]
+}

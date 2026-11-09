@@ -1,0 +1,18 @@
+{
+  "dataSignals": [
+    { "name": "Joint1Angle",      "dataType": "float32", "description": "Base rotation joint angle in degrees", "unit": "deg", "minValue": -170, "maxValue": 170 },
+    { "name": "Joint2Angle",      "dataType": "float32", "description": "Shoulder joint angle in degrees", "unit": "deg", "minValue": -90, "maxValue": 135 },
+    { "name": "Joint3Angle",      "dataType": "float32", "description": "Elbow joint angle in degrees", "unit": "deg", "minValue": -150, "maxValue": 150 },
+    { "name": "Joint4Angle",      "dataType": "float32", "description": "Wrist pitch angle in degrees", "unit": "deg", "minValue": -180, "maxValue": 180 },
+    { "name": "Joint5Angle",      "dataType": "float32", "description": "Wrist yaw angle in degrees", "unit": "deg", "minValue": -120, "maxValue": 120 },
+    { "name": "GripperForce",     "dataType": "float32", "description": "Gripper clamping force in Newtons", "unit": "N", "minValue": 0, "maxValue": 200 },
+    { "name": "PayloadWeight",    "dataType": "float32", "description": "Detected payload weight in kg", "unit": "kg", "minValue": 0, "maxValue": 20 },
+    { "name": "CycleCount",       "dataType": "int32",   "description": "Total completed work cycles", "minValue": 0, "maxValue": 999999 },
+    { "name": "MotorTemp",        "dataType": "float32", "description": "Drive motor temperature in Celsius", "unit": "°C", "minValue": -20, "maxValue": 120 },
+    { "name": "IsEnabled",        "dataType": "bool",    "description": "Robot in enabled/servo-on state", "minValue": 0, "maxValue": 1 },
+    { "name": "IsHoming",         "dataType": "bool",    "description": "Homing sequence in progress", "minValue": 0, "maxValue": 1 },
+    { "name": "FaultActive",      "dataType": "bool",    "description": "Any active fault condition", "minValue": 0, "maxValue": 1 },
+    { "name": "GripperClosed",    "dataType": "bool",    "description": "Gripper fully closed", "minValue": 0, "maxValue": 1 },
+    { "name": "Test",    "dataType": "float32", "description": "Test", "minValue": 0, "maxValue": 1.7 }
+  ]
+}

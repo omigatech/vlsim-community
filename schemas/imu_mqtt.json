@@ -1,0 +1,27 @@
+{
+  "mqtt": {
+    "topics": [
+      {"topic": "sim/imu/fast", "rateHz": 50, "signals": ["heading", "roll", "pitch", "g?", "a?"]},
+      {"topic": "sim/imu/status", "rateHz": 1, "signals": ["temp", "cal.*", "mag.*"]}
+    ]
+  },
+  "dataSignals": [
+    {"name": "heading", "dataType": "float32", "unit": "deg", "minValue": 0, "maxValue": 360, "description": "Euler heading"},
+    {"name": "roll", "dataType": "float32", "unit": "deg", "minValue": -30, "maxValue": 30, "description": "Euler roll"},
+    {"name": "pitch", "dataType": "float32", "unit": "deg", "minValue": -30, "maxValue": 30, "description": "Euler pitch"},
+    {"name": "gx", "dataType": "float32", "unit": "rad/s", "minValue": -2, "maxValue": 2, "description": "Gyro x"},
+    {"name": "gy", "dataType": "float32", "unit": "rad/s", "minValue": -2, "maxValue": 2, "description": "Gyro y"},
+    {"name": "gz", "dataType": "float32", "unit": "rad/s", "minValue": -2, "maxValue": 2, "description": "Gyro z"},
+    {"name": "ax", "dataType": "float32", "unit": "m/s2", "minValue": -5, "maxValue": 5, "description": "Linear acceleration x"},
+    {"name": "ay", "dataType": "float32", "unit": "m/s2", "minValue": -5, "maxValue": 5, "description": "Linear acceleration y"},
+    {"name": "az", "dataType": "float32", "unit": "m/s2", "minValue": -5, "maxValue": 5, "description": "Linear acceleration z"},
+    {"name": "temp", "dataType": "int8", "unit": "C", "minValue": 15, "maxValue": 40, "description": "Sensor temperature, 1 C resolution"},
+    {"name": "cal.sys", "dataType": "uint8", "minValue": 0, "maxValue": 3, "description": "sys calibration, 0 (none) .. 3 (full)"},
+    {"name": "cal.gyro", "dataType": "uint8", "minValue": 0, "maxValue": 3, "description": "gyro calibration, 0 (none) .. 3 (full)"},
+    {"name": "cal.accel", "dataType": "uint8", "minValue": 0, "maxValue": 3, "description": "accel calibration, 0 (none) .. 3 (full)"},
+    {"name": "cal.mag", "dataType": "uint8", "minValue": 0, "maxValue": 3, "description": "mag calibration, 0 (none) .. 3 (full)"},
+    {"name": "mag.x", "dataType": "float32", "unit": "uT", "minValue": -60, "maxValue": 60, "description": "Magnetometer x"},
+    {"name": "mag.y", "dataType": "float32", "unit": "uT", "minValue": -60, "maxValue": 60, "description": "Magnetometer y"},
+    {"name": "mag.z", "dataType": "float32", "unit": "uT", "minValue": -60, "maxValue": 60, "description": "Magnetometer z"}
+  ]
+}
